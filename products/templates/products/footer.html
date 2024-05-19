@@ -1,0 +1,75 @@
+{% load static %}
+
+<head>
+    <style>
+        .instgram1 {
+            color: rgb(0, 0, 0);
+            transition: rotate 1s;
+        }
+        .instgram1:hover {
+            rotate: 360deg;
+            color: #ff3333;
+        }
+    </style>
+</head>
+<br>
+<br>
+<br>
+
+<footer class="shadow ">
+    <div class="container-fluid mt-5">
+        <div class="row ">
+            <div class="col-12 col-md-4">
+                <h5>دفتر مرکزی
+                </h5>
+                <p class="text-colorforbuyLow fw-bold">
+                    آدرس : تهران - میدان نبوت (هفت حوض)
+                </p>
+                <p class="text-colorforbuyLow fw-bold">تلفن: 09964300456
+                </p>
+            </div>
+            <div class="col-12 col-md-8 text-center p-3 d-flex flex-row-reverse d-flex  rounded-4">
+                <div class="mx-3">
+
+                    <a href="">
+                        <p class="instgram1"><i class="bi  fa-solid fa-sync fa-spin   bi-instagram  h1"></i> </p>
+                    </a>
+                </div>
+                <div class="mx-3">
+
+                    <a href="">
+                        <p class="instgram1"><i class="bi  bi-whatsapp h1"></i></p>
+                    </a>
+                </div>
+                <div class="mx-3">
+
+                    <a href="https://t.me/kiyiarash">
+                        <p class="instgram1" id="instagram1" > <i class="bi instgram  bi-telegram h1"></i></p>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-12  d-flex flex-row-reverse  rounded-4">
+
+                <a class="me-5" href="">
+                    <img src="{% static 'products/img/ENAMAD.png' %}" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+    <p class="text-center text-colorforbuy mt-3">© [2024] TakKharid.com. All rights reserved.
+     تمامی حقوق برای -تک خرید- محفوظ است © </p>
+    {% comment %} <div class="text-center">
+        <div>
+
+            <a href="https://github.com/kiarashshahedi">
+                <p class="text-black"><span class="">Back end : </span> kiarash Shahedi</p>
+            </a>
+        </div>
+        <a href="https://github.com/madkid2005">
+            <p class="text-black"><span>Front  end : </span> Mahdi Hosseinian </p>
+        </a>
+
+    </div> {% endcomment %}
+</footer>

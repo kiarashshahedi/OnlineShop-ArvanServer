@@ -1,0 +1,11 @@
+{% extends 'products/base.html' %}  
+  
+{% block body %}
+<div class="container category-container">
+    {% for category in categories %}
+    <div class="category">
+        <h3><a href="{% url 'category' category %}">{{ category }}</a></h3>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

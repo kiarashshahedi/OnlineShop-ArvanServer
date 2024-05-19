@@ -1,0 +1,86 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block head_extra %}
+{% endblock %}
+{% block body %}
+
+
+
+
+<section>
+    <div class="container mt-5 mx-auto text-center " date-aos="flip-down">
+        <div class="row mt-5 justify-content-center  ">
+            <div class="col-12 col-md-4 bg-danger shadow rounded-start-4 col-auto h-100 my-auto mt-5 ">
+                <img class="img-fluid  rounded-4 mb-5 d-none d-md-block" src="{% static 'custom_loggin/images/verify.png' %}" alt="">
+
+            </div>
+            <div class="col-12 col-md-4 shadow bg-white  rounded-end-4 mt-5 ">
+                <div class=" text-center">
+
+                    <h1 class="Tak text-danger  mt-4">Tak Kharid</h1>
+                </div>
+                <br>
+                <div class="text-start">
+
+                    <p class="text-start h4"> ورود | ثبت نام</p>
+
+
+                    <p class="h6 text-colorforbuy text-start mt-4"> لطفا کد ارسال شده را وارد کنید</p>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+
+                    <form id="verificationForm " action="." method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.GET.next }}" class="">
+                        <input type="text" value=" {{ mobile }} " readonly disabled class="fadeIn second border border-primary border-1 rounded-2 mb-2 mx-1 text-end" name="mobile" >
+                        <input class="fadeIn second border border-primary border-1 rounded-2 mb-2 text-center" type="text"  required name="otp"  placeholder=" کد تایید ">
+                        <input class="btn btn-danger mt-2 w-100" type="submit" class="fadeIn fourth" value="ورود">
+                    </form>
+
+                
+                    
+                </div>
+                <div id="formFooter">
+                    <a class="underlineHover" href="{% url 'register_view' %}"><small>تغییر شماره</small></a>
+                  </div>
+            </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}
+
+
+
+
+
+
+
+
+<script>
+function moveToNextInput(currentInput) {
+    // اگر مقدار فیلد فعلی پر شده است
+    if (currentInput.value.length >= 1) {
+        // یافتن فیلد بعدی
+        var nextInput = currentInput.nextElementSibling;
+        // اگر فیلد بعدی وجود داشته باشد
+        if (nextInput) {
+            // انتقال به فیلد بعدی
+            nextInput.focus();
+        }
+    }
+}
+
+// جلوگیری از ارسال فرم به صورت اتوماتیک
+document.getElementById("verificationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz " crossorigin="anonymous "></script>
+
+
+</html>

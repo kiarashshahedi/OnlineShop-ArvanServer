@@ -1,0 +1,110 @@
+{% extends 'products/base.html' %}   
+{% load static %} 
+{% block body %}
+
+
+
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-12 col-md-8 row-cols-1 mt-5 shadow">
+            <div class="d-grid my-auto">
+                <div class="d-grid my-auto mx-auto text-center">
+                    <h5 class="fw-bold ">  Ecommerce website - وب سایت تجارت الکترونیک (نمونه کار)</h5>
+                    <p class="text-colorforbuyLow">خوش آمدید به دنیای برتر طراحی اپ و وب‌سایت</p>
+
+                    <p>سلام از طرف گروه برنامه نویسی پویایی که درون این دشت وسیع -دیجیتال- قدرت را به تصویر می‌کشند!.</p>
+                    <p> ما، عقل و استعدادی هستیم که موتور این وب‌سایت را تغذیه می‌کند</p>
+
+                    <strong>آشنایی با مدیریت و مدیر تیم بکند : کیارش شاهدی</strong>
+                        <p> کیارش  پشت پرده است، سازنده معماری پیچیده‌ای که قدرت وب‌سایت‌های ما را تامین می‌کند. با علاقه به حل مسائل و دارای مهارتی برای تبدیل خطوط کد به عملکردهای
+                        بی‌نقص، که اطمینان می‌دهد که هر وب‌سایتی که ما ایجاد می‌کنیم مانند یک ماشین روان کار می‌کند.
+                    </p>
+
+
+                    <strong>آشنایی با مدیر تیم فرانت : مهدی حسینیان</strong>
+                        <p> نوازنده آنترفیس  جادو را به صفحه نمایش می‌آورد و با تخصص در توسعه آنترفیس. با طراحی و مهارت در تجربه کاربری، مفهوم‌های بکند  را به رابط‌های جذابی تبدیل می‌کند که بازدیدکنندگان را در حیرت می‌گذارد.
+                    ...لمس تیم فرانت ما هر پروژه را به ارتفاعات جدیدی از براقیت و زیبایی می‌برد.</p>
+
+
+                    <p>با هم، ما تیم رویایی شما هستیم در تلاقی خلاقیت و کارایی، ما مهارت‌هایمان را برای به واقعیت تبدیل کردن دیدگاه شما یکی می‌کنیم. آیا شما یک شروع‌آتی هستید که به دنبال حضور دیجیتال می‌گردد یا یک شرکت پیشرو که هویت آنلاین خود را بازتعریف
+                        می‌کند،
+                        <strong> ما اینجا هستیم تا رویاهای شما را به پیکسل‌ها تبدیل کنیم.</strong>
+                    </p>
+
+                    <p>
+                        آیا آماده شروع پروژه خود هستید یا می‌خواهید بیشتر در مورد آنچه می‌توانیم ارائه دهیم بدانید؟
+                    </p>
+
+                    <p class="fw-bold"><strong class="fw-bold">
+                        تماس با ما
+                    </strong></p>
+
+                
+
+                    <p class="fw-bold">شماره تماس: [ 456-4300-0996 ]</p>
+                    <p>
+                        <a href="https://t.me/kiyiarash">
+                            <small><p class="instgram1 fw-bold " id="instagram1" > Telegram<i class="bi instgram  bi-telegram h1 text-color1"></i></p></small>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 row-cols-1 mt-5 ">
+
+            <div class="d-grid mt-5">
+
+                <div class="d-flex ">
+
+                    <div class="d-grid my-auto mx-auto text-center">
+                        <h5 class="text-center text-color1 fw-bold shadow"><small>Kiarash Shahedi</small></h5>
+
+                    </div>
+                    <img id="imghoverBack" class="imghoverBack" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlxuAKV9D75DDP7pwHy6ewIJ9qqd7vWoEssIYBimIR-g&s" alt="">
+                    <img id="imgkia" class="imghoverBack hiden" src="{% static 'img/kia.png' %}" alt="">
+
+                </div>
+            </div>
+            <div class="d-grid mt-5">
+
+                <div class="d-flex ">
+
+                    <div class="d-grid my-auto mx-auto text-center">
+                        <h5 class="text-center text-color1 fw-bold shadow"><small>Mahdi Hoseinian</small></h5>
+
+                    </div>
+                    <img id="imghoverFront" class="imghoverBack" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlxuAKV9D75DDP7pwHy6ewIJ9qqd7vWoEssIYBimIR-g&s" alt="">
+                    <img id="imgmahdi" class="imghoverBack hiden" src="{% static 'img/mahdi.png' %}" alt="">
+
+                </div>
+            </div>
+            
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const back = document.getElementById("imghoverBack");
+    const imgkia = document.getElementById("imgkia");
+    const front = document.getElementById("imghoverFront");
+
+    const imgmahdi = document.getElementById("imgmahdi");
+
+    function Backend() {
+        back.classList.toggle("hiden")
+        imgkia.classList.toggle("hiden")
+    }
+    back.addEventListener("mousemove", Backend)
+
+    function Frontend() {
+        front.classList.toggle("hiden")
+        imgmahdi.classList.toggle("hiden")
+    }
+    front.addEventListener("mousemove", Frontend)
+</script>
+
+
+{% endblock %}

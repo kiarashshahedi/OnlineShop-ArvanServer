@@ -1,0 +1,80 @@
+<div class="d-grid gap-2 mt-3 text-center">
+    <span class="text-colorforbuy"> <small>تعداد موجود در انبار: </small> {{ product.inventory}}  </span>
+
+    <!--sabad kharid-->
+    <button class="btn color1 text-bg-btncolorbuy rounded-5 fw-bold btn-danger text-white-90" style="height: 60px;" type="submit" value="{{ product.id }}" id="add-cart">افزودن به سبد خرید</button>
+        {% if request.session.product_added_to_cart %}
+    <div class="alert">
+        <p>Product added to cart successfully.</p>
+    </div>
+        {% endif %}
+</div>
+
+
+
+
+<script>
+    // Check if button pressed
+    $(document).on('click', '#add-cart', function(e){
+        e.preventDefault();
+        var productID = $(this).val();  // Get the product ID from the button clicked
+        var quantity = $('#qty-cart').val();  // Get the selected quantity
+    
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'cart_add' %}',
+            data: {
+        product_id: $('#add-cart').val(),
+        product_qty: $('#qty-cart option:selected').text(),
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        action: 'post'
+            },
+
+            success: function(json){
+                
+                $('#cart_quantity').text(json.qty);  // Update cart quantity on the page
+                location.reload();  // Reload the page after adding to cart
+            },
+            error: function(xhr, errmsg, err){
+    
+            }    
+        });  
+    })
+
+    // Function to increase quantity
+    function increaseQuantity() {
+        var currentValue = parseInt($('#qty-cart').val()); // Get the current value
+        if (currentValue < 5) { // Check if the current value is less than 5 (maximum)
+            $('#qty-cart').val(currentValue + 1); // Increment the value
+        }
+    }
+
+    // Function to decrease quantity
+    function decreaseQuantity() {
+        var currentValue = parseInt($('#qty-cart').val()); // Get the current value
+        if (currentValue > 1) { // Check if the current value is greater than 1 (minimum)
+            $('#qty-cart').val(currentValue - 1); // Decrement the value
+        }
+    }
+
+    //tozihat bishtar mahsol
+    const Tezafe = document.getElementById("tozihatbishtar");
+    const textezafe = document.getElementById("matnezafe");
+    const bastan = document.getElementById("dokmebastan");
+
+    function ezafeha() {
+        textezafe.classList.toggle("hiden")
+        bastan.classList.toggle("hiden")
+        Tezafe.classList.toggle("hiden")
+    }
+
+    Tezafe.addEventListener("click", ezafeha)
+
+    function ezafeha() {
+        textezafe.classList.toggle("hiden")
+        bastan.classList.toggle("hiden")
+        Tezafe.classList.toggle("hiden")
+    }
+    bastan.addEventListener("click", ezafeha)
+
+</script>

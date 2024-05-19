@@ -1,0 +1,269 @@
+{% extends 'products/base.html' %}    
+{% block body %}
+
+<head>
+    <style>
+        .custom-pointer {
+            cursor: default; 
+        }
+        .custom-select {
+            background: linear-gradient(to bottom, rgba(255, 50, 50, 0.5), rgba(204, 0, 0, 1)); 
+            border: none;
+            border-radius: 5px;
+            color: #fff; 
+            padding: 4px 6px;
+        }
+        
+        .custom-select option {
+            background-color: rgba(255, 51, 51, 0.8); 
+            color: #fff;
+        }
+        
+        .custom-select:hover {
+            background-color: rgba(100, 50, 50, 0.3); 
+        }
+        
+        .card-product {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        .card-product .btn {
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .card-product .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-item img {
+            border-radius: 15px;
+        }
+
+        .show-more {
+            cursor: pointer;
+            color: #ff3333; 
+            background-color: #fff
+        }
+
+        .show-more:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<div class="container mt-5">
+
+    <div class="row shadow">
+        <div class="col-md-5">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for image in images %}
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <img src="{{ image.image.url }}" class="d-block img-fluid" alt="Product Image">
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-7 col-12">
+            <div class=" card-product my-3 ">
+                <div class="card-body text-center">
+                    <h2 class="card-title">{{ product.name }}</h2>
+                    <h5 class="text-colorforbuyLow text-start mt-4"> <small>مشخصات:</small></h5>
+                    <h6 class="text-colorforbuy text-start">سری پردازنده: <span class="text-black">Core i7</span></h6>
+                    <h6 class="text-colorforbuy text-start">سازنده پردازنده: <span class="text-black">Intel</span> </h6>
+                    <h6 class="text-colorforbuy text-start">فرکانس کاری پردازنده: <span class="text-black">UP To 2.7 GHz</span> </h6>
+                    <p class="card-text mt-3 text-end fw-bold text-color1 ">
+                        {% if product.in_sale %}
+                        <s>{{ product.price }}</s> {{ product.sale_price }} 
+                        {% else %}
+                        {{ product.price }}
+                        {% endif %}
+                        <small class="text-black">تومان</small>
+                    </p>
+                    
+                    <div class="input-group input-group-sm my-3">
+                        <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseQuantity()">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                        <select class="form-select select-smaller" id="qty-cart">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseQuantity()">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        
+                    </div>
+                    <button class="btn btn-danger rounded-pill fw-bold py-2" type="button" value="{{ product.id }}" id="add-cart">افزودن به سبد خرید</button>
+                    <p class="text-muted mt-2">تعداد موجود در انبار: {{ product.inventory }}</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12 col-12">
+            <div class="card card-product shadow">
+                <div class="card-body">
+                    <h4 class="card-title ">توضیحات محصول:</h4>
+                    <div id="product-description">
+                        <p class="card-text">{{ product.description|truncatewords:9 }}</p>
+                        <button class="btn color1 show-more">نمایش بیشتر</button>
+                    </div>
+                    <div id="full-description" style="display: none;">
+                        <p class="card-text">{{ product.description }}</p>
+                        <button class="btn color1 show-less">نمایش کمتر</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card card-product shadow">
+                <div class="card-body">
+                    <h4 class="card-title">امتیاز و دیدگاه کاربران</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>امتیاز کالا : {{ product.average_rating }} از 5</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>شما می‌توانید نظر های خود را درباره این کالا در باکس زیر ثبت کنید.</p>
+                            {% if user.is_authenticated %}
+                            <form method="post" action="{% url 'add_review' product.id %}">
+                                {% csrf_token %}
+                                
+                                <div class="rate d-flex">
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5" title="5">5 stars</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4" title="4">4 stars</label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3" title="3">3 stars</label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2" title="2">2 stars</label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1" title="1">1 star</label>
+                                </div>
+                                <div class="form-group shadow border border-3">
+                                    <label for="comment"> </label>
+                                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                                </div>
+                                <button type="submit" class="btn color1 mt-3">ثبت دیدگاه</button>
+                            </form>
+                            {% else %}
+                            <p class="fw-bold">ابتدا وارد شوید.</p>
+                            <form method="post" action="{% url 'login' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                                <button type="submit" class="btn btn-danger text-white">ورود | ثبت نام</button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <h5>نظرات کاربران:</h5>
+                            <ul class="list-unstyled">
+                                {% for review in reviews %}
+                                <li class="border p-3 my-2 rounded">
+                                    <p>{{ review.comment }}</p>
+                                    <div class="text-muted small">امتیاز: {{ review.rating }}</div>
+                                </li>
+                                {% empty %}
+                                <li class="text-muted">هیچ نظری ثبت نشده است.</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Check if button pressed
+    $(document).on('click', '#add-cart', function(e){
+        e.preventDefault();
+        var productID = $(this).val();  // Get the product ID from the button clicked
+        var quantity = $('#qty-cart').val();  // Get the selected quantity
+    
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'cart_add' %}',
+            data: {
+                product_id: $('#add-cart').val(),
+                product_qty: $('#qty-cart option:selected').text(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function(json){
+                $('#cart_quantity').text(json.qty);  // Update cart quantity on the page
+                location.reload();  // Reload the page after adding to cart
+            },
+            error: function(xhr, errmsg, err){
+
+            }    
+        });  
+    })
+
+    // Function to increase quantity
+    function increaseQuantity() {
+        var currentValue = parseInt($('#qty-cart').val()); // Get the current value
+        if (currentValue < 5) { // Check if the current value is less than 5 (maximum)
+            $('#qty-cart').val(currentValue + 1); // Increment the value
+        }
+    }
+
+    // Function to decrease quantity
+    function decreaseQuantity() {
+        var currentValue = parseInt($('#qty-cart').val()); // Get the current value
+        if (currentValue > 1) { // Check if the current value is greater than 1 (minimum)
+            $('#qty-cart').val(currentValue - 1); // Decrement the value
+        }
+    }
+
+    // show more and less
+    document.addEventListener('DOMContentLoaded', function () {
+        var showMoreButton = document.querySelector('.show-more');
+        var showLessButton = document.querySelector('.show-less');
+
+        showMoreButton.addEventListener('click', function () {
+            document.getElementById('product-description').style.display = 'none';
+            document.getElementById('full-description').style.display = 'block';
+        });
+
+        showLessButton.addEventListener('click', function () {
+            document.getElementById('product-description').style.display = 'block';
+            document.getElementById('full-description').style.display = 'none';
+        });
+    });
+
+
+
+</script>
+
+{% endblock %}

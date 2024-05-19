@@ -1,0 +1,28 @@
+{% extends 'products/base.html' %}
+{% block body %}
+
+<div class=" col-12 col-md-9 mx-auto mx-5  ">
+  <div class="d-flex justify-content-between ">
+    <div class="container border border-5 border-danger">
+      <div class="row">		
+        <div class="col-md-6 offset-md-3 border border-3 border-danger-subtle ">
+          <br/><br/>
+          <form method="POST" action="{% url 'update_user' %}">
+            {% csrf_token %}
+                    
+            {{ user_form.as_p }}
+            <br/><br/>
+            <button type="submit" class="btn btn-danger background-color1-op mx-4">
+              به روز رسانی 
+            </button>
+          </form>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

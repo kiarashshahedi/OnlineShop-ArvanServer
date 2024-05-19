@@ -1,0 +1,181 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block head_extra %}
+
+    <style>
+        .group {
+            position: relative;
+            margin-bottom: 45px;
+        }
+        
+        input {
+            font-size: 18px;
+            padding: 10px 10px 10px 5px;
+            display: block;
+            width: 300px;
+            border: none;
+            border-bottom: 1px solid #757575;
+        }
+        
+        input:focus {
+            outline: none;
+        }
+        /* LABEL ======================================= */
+        
+        label {
+            color: #999;
+            font-size: 18px;
+            font-weight: normal;
+            position: absolute;
+            pointer-events: none;
+            left: 5px;
+            top: 10px;
+            transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -webkit-transition: 0.2s ease all;
+        }
+        /* active state */
+        
+        input:focus~label,
+        input:valid~label {
+            top: -20px;
+            font-size: 14px;
+            color: #5264AE;
+        }
+        /* BOTTOM BARS ================================= */
+        
+        .bar {
+            position: relative;
+            display: block;
+            width: 300px;
+        }
+        
+        .bar:before,
+        .bar:after {
+            content: '';
+            height: 2px;
+            width: 0;
+            bottom: 1px;
+            position: absolute;
+            background: #5264AE;
+            transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -webkit-transition: 0.2s ease all;
+        }
+        
+        .bar:before {
+            left: 50%;
+        }
+        
+        .bar:after {
+            right: 50%;
+        }
+        /* active state */
+        
+        input:focus~.bar:before,
+        input:focus~.bar:after {
+            width: 50%;
+        }
+        /* HIGHLIGHTER ================================== */
+        
+        .highlight {
+            position: absolute;
+            height: 60%;
+            width: 100px;
+            top: 25%;
+            left: 0;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        /* active state */
+        
+        input:focus~.highlight {
+            -webkit-animation: inputHighlighter 0.3s ease;
+            -moz-animation: inputHighlighter 0.3s ease;
+            animation: inputHighlighter 0.3s ease;
+        }
+        /* ANIMATIONS ================ */
+        
+        @-webkit-keyframes inputHighlighter {
+            from {
+                background: #5264AE;
+            }
+            to {
+                width: 0;
+                background: transparent;
+            }
+        }
+        
+        @-moz-keyframes inputHighlighter {
+            from {
+                background: #5264AE;
+            }
+            to {
+                width: 0;
+                background: transparent;
+            }
+        }
+        
+        @keyframes inputHighlighter {
+            from {
+                background: #5264AE;
+            }
+            to {
+                width: 0;
+                background: transparent;
+            }
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block body %}
+<section>
+<div class="container mx-auto text-center " date-aos="flip-down">
+<div class="row  justify-content-center  ">
+
+<div class="col-12 col-md-4 bg-danger shadow rounded-start-4 col-auto h-100 my-auto mt-5 ">
+    <img class="img-fluid  rounded-4 mb-5 d-none d-md-block " src="{% static 'custom_loggin/images/verify.png' %}" alt="verify">
+
+</div>
+
+<div class="col-12 col-md-4 shadow bg-white  rounded-end-4 mt-5 ">
+    
+    <div class="text-start">
+        <p class="text-start h4"> ورود | ثبت نام</p>
+        <p class="h6 text-colorforbuy text-start mt-4">لطفا شماره موبایل خود را وارد کنید</p>
+    </div>
+
+    <form onsubmit="return validateInput()" action="." method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+
+        <input type="text" required class="border  mt-3 d-flex align-content-center w-100 border-danger rounded-3" id="inputField" maxlength="11" name="mobile">
+        <button class="border btn btn-danger mt-3  text-center w-100 border-danger rounded-3" type="submit" value="Submit">
+            ورود
+        </button>                    
+    </form>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
+
+
+
+
+{% block js %}
+<script>
+    function validateInput() {
+        var input = document.getElementById("inputField").value;
+        if (input.length < 11) {
+            alert("حداقل باید11 رقم وارد کنید.");
+            return false;
+        }
+        return true;
+    }
+</script>
+{% endblock %}

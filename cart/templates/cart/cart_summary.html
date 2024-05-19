@@ -1,0 +1,293 @@
+
+{% extends 'products/base.html' %}    
+{% block body %}
+{% block head_extra %}
+<style>
+    .old-price {
+        background: repeating-linear-gradient(50deg, rgba(250,0,0,100), rgba(250,0,0,100), transparent 0.75px, transparent 4px);
+        padding: 5px;
+    }
+  
+</style>
+{% endblock %}
+
+<body>
+</br>
+
+    <h4 class=" bi-cart-check text-center "> سبدخرید </h4>
+
+    {% if cart_products %}
+    {% for product in cart_products %} 
+        <div class="container-fluid  mt-5">
+            <div class="row mx-2">
+                <div class="col-12 col-md-8 mx-auto">
+                    <div class="border border-1 rounded-3 d-flex  shadow bg-white">
+
+                        <div class="text-center col-12 col-md-3">
+                            <img class="img-fluid mx-1 mt-1" src="{{product.image.url}}" alt="">
+                        </div>
+
+                        <!-- moshakhasat zire esm mahsol-->
+                        <div class="d-block justify-content-start  ">
+                            <div class=" mb-1 ">
+                            <p class="fs-5 mt-2 fw-bold mx-1">
+                                <i class="bi bi-caret-left-fill text-danger "></i>
+                                {{ product.name }}
+                            </p>
+                            
+                            <div class="d-grid">
+                                <span class=" text-colorforbuyLow"><i class="bi bi-circle-fill text-dark mx-3"></i> سیاه</span>                       
+                            </div>
+                            <!-- NESHAN DAHANDE TEDAD -->
+                            <div class="d-flex">                         
+                                <span class=" text-muted mb-1 pb-2"><i class="bi bi-clipboard-check text-danger mx-3"></i> تعداد : </span>
+                                {% for key, value in quantities.items %}
+                                {% if key == product.id|slugify %}
+                                <option class="mx-1" selected>{{ value }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <!-- QEIMAT -->
+                            <div class=" ">
+                                {% if product.in_sale %} 
+                                
+                                    <div class="d-grid mx-3 ">
+
+                                        <span class="text-colorforbuyLow text-color1">  
+ 
+                                            <span class=" text-colorforbuyLow d-flex fw-bold">
+
+                                                <small>
+                                                    <s class="text-colorforbuy fw-bold mx-1">{{ product.price }}</s>
+                                                    <span><i class="bi bi-percent text-color1 fw-bold">OFF</i></span>
+
+                                                </small>
+                                            </span>
+
+                                        </span>
+                                        <span class=" fw-bold fs-5 text-colorforbuyLow ">
+                                            <small>
+                                                
+                                                <span class="text-colorforbuyLow">
+                                                    <span class="text-color1">
+                                                    <span>
+                                                        <span class="text-colorforbuyLow mx-1">
+                                                            قیمت:
+                                                        </span>
+                                                        <small>{{ product.sale_price }}</small>
+                                                    </span>
+                                                    
+                                                
+                                                </span>
+                                            </small>                            
+                                        </span>
+                                    </div>
+                               
+
+                                {% else %}
+
+                                    <span class=" fw-bold fs-5 text-colorforbuyLow ">
+                                        <small>
+                                            
+                                            <span class="text-colorforbuyLow">
+                                                <span class="text-color1">
+                                                <span>
+                                                    <span class="text-colorforbuyLow mx-3">
+                                                        قیمت:
+                                                    </span>
+                                                    <small>{{ product.price }}</small>
+                                                </span>
+                                                
+                                            
+                                            </span>
+                                        </small>                            
+                                    </span>
+
+                                {% endif %}  
+
+                            </div>
+                        </div>
+
+                            <div class="d-flex justify-content-end">
+                            
+                                <td class="align-middle border-bottom-3 ">
+                                    <div class="d-grid">
+                                        <div class="d-flex flex-row mx-1">
+                                            <button class="btn px-3 rounded-pill text-center" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                             <i class="bi bi-dash-circle h4 text-color1"></i>
+                                            </button>
+    
+                                            <input id="select{{product.id}}" min="0" max="5" name="quantity" value="1" type="number" class="form-control form-control-sm" style="width: 90px; height:50px;" />
+                                            <button class="btn px-3 text-color1 text-center rounded-pill" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                <i class="bi h4 mt-2 bi-plus-circle"> </i>
+                                            </button>
+                                            <button type="button" data-index="{{product.id}}" class="update-cart btn text-color1 fw-bold btn-outline-danger mt-1 mx-1 mb-1">به روز رسانی تعداد <i class="bi mx-1 fw-bold  bi-arrow-down-square "></i></button>
+                                            <button type="button " data-index="{{product.id}}" class="delete-product btn text-color1 btn-outline-danger mt-1 mx-1 mb-1"> <i class="bi mx-1  bi-trash3"></i></button>
+                                            
+                                        </div> 
+                    
+                                    </div>    
+
+                                </td>                         
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+
+                <!-- box sorat hesab -->
+                <div class="col-12 col-md-11 mx-auto row-cols-1">
+                    <br>
+
+                    <div class="text-center">
+                        <button class="btn fw-bold fs-5">صورت حساب</button>
+                    </div>
+
+                    <div class="shadow bg-white rounded-4">
+                        <div class="">
+                            {% for product_id, total_price in p_totals.items %}
+                                {% for product in cart_products %}
+                                    {% if product.id == product_id %}
+                                    <div class="d-flex justify-content-between ">
+                                        <span class="d-flex ms-4 mt-3 text-colorforbuyLow fw-bold">
+                                            <small>
+                                                <p class="text-black  text-start fw-bold mt-1">
+                                                    <span class="bi bi-box text-color1  text-start  mt-1 mx-1"></span>
+                                                    {{product.name}}
+                                                </p>
+                                            </small>
+                                            <span>
+                                                {% for key, value in quantities.items %}
+                                                    {% if key == product.id|slugify %}
+                                                        <option class="mx-2 text-color1" selected>{{ value }}x</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </span>
+                                        </span>
+                                        
+                                        <span class="mx-3 mt-3 text-colorforbuyLow fw-bold">
+                                            <small>{{ total_price }} 
+                                                <span>تومان</span>
+                                            </small>
+                                        </span>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <span class="text-color1 mx-4 mt-3">
+                                <small>
+                                    تخفیف شما
+                                </small>
+                            </span>
+
+                            <span class="text-color1 mx-3 mt-3">
+                                <small>20,000 <span>تومان</span>
+                            </small>
+                            </span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <span class="text-colorforbuyLow mx-4 mt-3 fw-bold" > قیمت نهایی </span>
+                            <span class="text-colorforbuyLow mx-3 mt-3 fw-bold"> {{ totals }} تومان </span>
+
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4 mx-3 ">
+                            <button type="button" class="btn btn-danger color1 rounded-2  ">ادامه خرید</button>
+                            <button class="btn text-color1 fw-bold btn-outline-danger mb-3" onclick="window.location.href='{% url 'product_list'%}'"> بازگشت به صفحه اصلی <i class="bi mx-1"></i></button>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+{% else %}
+
+  <h5 class="text-bg-warning">در سبد شما کالایی وجود ندارد <h5>
+    <div class="d-flex justify-content ">
+      <p class=" btn btn-warning"><a class="text-dark" href="{% url "product_list" %}"> بازگشت به صفحه اصلی </a></p>
+    </div>
+  <br/><br/>
+
+{% endif %}
+
+
+
+
+
+
+
+
+<script>
+    // Update Cart
+    
+    $(document).on('click', '.update-cart', function(e){
+      e.preventDefault();
+      var productid = $(this).data('index');
+    
+      $.ajax({
+          type: 'POST',
+          url: '{% url "cart_update" %}' ,
+          data: {
+              product_id: $(this).data('index'),
+              product_qty: $('#select' + productid).val(),
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+              action: 'post'
+          },
+          success: function(json){
+              $('#cart_quantity').text(json.qty);
+              location.reload();
+          },
+          error: function(xhr, errmsg, err){
+              console.error(error);
+          }
+      });
+    });
+    
+    
+    // Delete Item From Cart
+    
+    $(document).on('click', '.delete-product', function(e){
+    e.preventDefault();
+    
+    
+    $.ajax({
+    type: 'POST',
+    url: '{% url 'cart_delete' %}',
+    data: {
+    product_id: $(this).data('index'),
+    csrfmiddlewaretoken: '{{ csrf_token }}',
+    action: 'post'
+    },
+    success: function(json){
+    location.reload();
+    },
+    
+    error: function(xhr, errmsg, err){
+    
+    }
+    
+    
+    });
+    
+    })
+    
+    
+    
+    
+    </script>
+    
+    
+    {% endblock %}
