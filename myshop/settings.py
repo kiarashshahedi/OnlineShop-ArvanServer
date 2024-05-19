@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-gc*4=8c@3c=a84d(ub8gg1i4kbfxqhbyw2a*hga44ud_3xao*o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['5.253.24.73', 'www.taakkhaarid.ir']
+ALLOWED_HOSTS = ['37.152.183.65', 'www.takkharidshop.ir']
 
 # ---------------------------------Application definition------------------------------
 
