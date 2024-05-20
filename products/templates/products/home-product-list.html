@@ -32,7 +32,6 @@
 </head>
 
 {% block body %}
-
 <div class="container-fluid d-flex justify-content-center align-items-center ">
     <div class="row">
         <div class="col-12 col-md-12">
@@ -57,10 +56,15 @@
                     <div class="carousel-item mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
                             <img src="{% static '/img/pcbanner.webp' %}" class="d-block img-fluid" alt="...">
-                            <img src="{% static 'products/img/275ae0a9c626d381af41776774b896c2e56ef18c_1715166122.webp' %}" class="d-block img-fluid" alt="...">
-
                         </a>
                     </div>
+                    <div class="carousel-item mb-3" data-bs-interval="10000">
+                        <a href="{% url 'all_products' %}">
+                            <img src="{% static '/img/iphonebanner.webp' %}" class="d-block img-fluid" alt="...">
+                        </a>
+                    </div>
+
+
                 </div>
                 
                 <!-- SLIDE BUTTONS -->
