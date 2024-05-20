@@ -34,8 +34,8 @@ SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
 # DEBUG = False
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# ALLOWED_HOSTS = ['37.152.183.65', 'www.takkharidshop.ir', '127.0.0.1:8000']
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+ALLOWED_HOSTS = ['37.152.183.65', 'www.takkharidshop.ir', '127.0.0.1:8000']
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
 
 # ---------------------------------Application definition------------------------------
 
