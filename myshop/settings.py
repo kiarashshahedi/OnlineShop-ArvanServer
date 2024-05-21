@@ -2,8 +2,10 @@ from decouple import config
 from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
+from dotenv import load_dotenv
 
 
+load_dotenv()
 
 MESSAGE_TAGS = {
     messages.ERROR : 'danger',
@@ -27,15 +29,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic')  # Dummy value for development
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-gc*4=8c@3c=a84d(ub8gg1i4kbfxqhbyw2a*hga44ud_3xao*o'
-SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
+# SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
+SECRET_KEY = os.getenv('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+DEBUG = os.getenv('DEBUG')
+
 # DEBUG = False
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
 
 # ALLOWED_HOSTS = ['37.152.183.65', 'www.takkharidshop.ir', '127.0.0.1:8000']
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
 
 # ---------------------------------Application definition------------------------------
 
