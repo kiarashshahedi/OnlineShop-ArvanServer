@@ -1,5 +1,3 @@
-from decouple import config
-from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
 from dotenv import load_dotenv
@@ -25,36 +23,13 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic')  # Dummy value for development
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
-# SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
+#SECRET_KEY = 'django-insecure-gc*4=8c@3c=a84d(ub8gg1i4kbfxqhbyw2a*hga44ud_3xao*o'
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
+# ALLOWED_HOSTS = ['37.152.183.65', 'www.takkharidshop.ir', '127.0.0.1:8000']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
 
 DEBUG = os.getenv('DEBUG')
-
-# DEBUG = False
-# DEBUG = config('DEBUG', default=False, cast=bool)
-
-# ALLOWED_HOSTS = ['37.152.183.65', 'www.takkharidshop.ir', '127.0.0.1:8000']
-# ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
-=======
-SECRET_KEY = 'django-insecure-gc*4=8c@3c=a84d(ub8gg1i4kbfxqhbyw2a*hga44ud_3xao*o'
-#SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = config('DEBUG', default=False, cast=bool)
-
-ALLOWED_HOSTS = ['37.152.183.65', 'www.takkharidshop.ir', '127.0.0.1:8000']
-#ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
->>>>>>> origin/main
 
 # ---------------------------------Application definition------------------------------
 
