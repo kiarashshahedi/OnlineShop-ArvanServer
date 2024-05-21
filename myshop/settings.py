@@ -2,12 +2,11 @@ import os
 from django.contrib.messages import constants as messages
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 MESSAGE_TAGS = {
-    messages.ERROR : 'danger',
-    messages.INFO : 'success'
+    messages.ERROR: 'danger',
+    messages.INFO: 'success'
 }
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,17 +18,17 @@ STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, 'custom_loggin/static'),
     # os.path.join(BASE_DIR, 'products/static'),
     os.path.join(BASE_DIR, 'static')
-    ]
+]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic')  # Dummy value for development
 
-#SECRET_KEY = 'django-insecure-gc*4=8c@3c=a84d(ub8gg1i4kbfxqhbyw2a*hga44ud_3xao*o'
+# SECRET_KEY = 'django-insecure-gc*4=8c@3c=a84d(ub8gg1i4kbfxqhbyw2a*hga44ud_3xao*o'
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# ALLOWED_HOSTS = ['37.152.183.65', 'www.takkharidshop.ir', '127.0.0.1:8000']
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+# Parse ALLOWED_HOSTS from the .env file
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
-DEBUG = os.getenv('DEBUG')
+DEBUG = os.getenv('DEBUG') == 'True'
 
 # ---------------------------------Application definition------------------------------
 
