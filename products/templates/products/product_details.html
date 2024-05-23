@@ -25,13 +25,13 @@
         
         .card-product {
             background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 40px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
             padding: 20px;
         }
         
         .card-product .btn {
-            border-radius: 20px;
+            border-radius: 40px;
             font-weight: bold;
             transition: all 0.6s ease;
         }
@@ -60,7 +60,7 @@
 
 <div class="container mt-5">
 
-    <div class="row shadow">
+    <div class="row shadow border border-1 rounded-5">
         <div class="col-md-5">
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -81,16 +81,18 @@
             </div>
         </div>
         <div class="col-md-7 col-12">
-            <div class=" card-product my-3 ">
+            <div class=" card-product my-3 mx-1">
                 <div class="card-body text-center">
                     <h2 class="card-title">{{ product.name }}</h2>
                     <h5 class="text-colorforbuyLow text-start mt-4"> <small>مشخصات:</small></h5>
                     <h6 class="text-colorforbuy text-start">سری پردازنده: <span class="text-black">Core i7</span></h6>
                     <h6 class="text-colorforbuy text-start">سازنده پردازنده: <span class="text-black">Intel</span> </h6>
                     <h6 class="text-colorforbuy text-start">فرکانس کاری پردازنده: <span class="text-black">UP To 2.7 GHz</span> </h6>
-                    <p class="card-text mt-3 text-end fw-bold text-color1 ">
+                    <p class="card-text mt-3 text-end fw-bold ">
                         {% if product.in_sale %}
-                        <s>{{ product.price }}</s> {{ product.sale_price }} 
+                        <span class="text-colorforbuyLow text-color1"><small><s>{{ product.price }}</s></small></span>
+                        <span class="mx-1 text-black">{{ product.sale_price }}</span>
+
                         {% else %}
                         {{ product.price }}
                         {% endif %}
@@ -175,7 +177,7 @@
                             </form>
                             {% else %}
                             <p class="fw-bold">ابتدا وارد شوید.</p>
-                            <form method="post" action="{% url 'login' %}">
+                            <form method="post" action="{% url 'register_view' %}">
                                 {% csrf_token %}
                                 <input type="hidden" name="next" value="{{ request.GET.next }}">
                                 <button type="submit" class="btn btn-danger text-white">ورود | ثبت نام</button>

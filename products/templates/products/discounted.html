@@ -22,12 +22,12 @@
 {% block body %}
 
 
-<div class="container mt-3 ">
+<div class="container">
     <!--img-->
-<div class=" border border-danger rounded-2 mb-1">
-    <img class="img-fluid" src="{% static '/img/takhfif.png' %}" alt="">
+    <div class=" border border-danger rounded-2 mb-1">
+        <img class="img-fluid" src="{% static '/img/takhfif.png' %}" alt="">
 
-</div>
+    </div>
 
     <div class="row ">
 
@@ -51,23 +51,28 @@
 </div>
 
 
-<div class="container mt-3">
+<div class="container mt-1">
     
     <div class="row  row-cols-2 mx-auto mt-2 gx-2 ">
         {% for product in products %}
         {% if  product.in_sale %}
         <div class="col-6 col-md-3 border border-1 hoverborder shadow rounded-3" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
             <div class="card-body mt-4 image-container">
-                <img class="img-fluid" src="{{product.image.url}}" alt="">
-                <div class="">
+                <a href="{% url 'product_detail' product.pk %}">
 
-                    <h6 class="card-title ">{{ product.name }}</h6>
-                    <div class="text-end mt-1">
+                    <img class="img-fluid" src="{{product.image.url}}" alt="">
+                    
+                    <div class="mt-1">
+                            <h6 class="card-title text-black">{{ product.name }}</h6>
 
-                        <p class="text-end text-colorforbuyLow fw-bold" style="font-size: 15px; margin-bottom: 10px;"><small>قیمت قدیم: </small>{{ product.price }}</p>
-                        <p class="card-text text-color1">{{ product.sale_price }}</p>
+                            <hr class="shadow"></hr>
+
+                            <div class="text-end mt-1">
+                                <p class="text-end text-colorforbuyLow mb-0"><s>{{product.price}} تومان </s></p>
+                                <p class="text-end text-color1 fw-bold mb-1">{{product.sale_price}} تومان </p>
+                            </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         {% endif %}
