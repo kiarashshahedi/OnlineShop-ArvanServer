@@ -96,7 +96,7 @@
                         {% endif %}
                         <small class="text-black">تومان</small>
                     </p>
-                    
+                    <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
                     <div class="input-group input-group-sm my-3">
                         <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseQuantity()">
                             <i class="bi bi-plus"></i>
@@ -113,6 +113,7 @@
                         </button>
                         
                     </div>
+                    
                     <button class="btn btn-danger rounded-pill fw-bold py-2" type="button" value="{{ product.id }}" id="add-cart">افزودن به سبد خرید</button>
                     <p class="text-muted mt-2">تعداد موجود در انبار: {{ product.inventory }}</p>
                     
