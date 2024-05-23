@@ -223,3 +223,6 @@ HAYSTACK_CONNECTIONS = {
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_NAME = 'sessionid'
+
+CSRF_TRUSTED_ORIGINS = ['https://www.takkharidshop.ir']
+
