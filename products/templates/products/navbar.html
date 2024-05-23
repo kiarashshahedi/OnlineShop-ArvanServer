@@ -143,39 +143,53 @@
 <div class="fixed-bottom fixed-bottom-options">
     <div class="container-fluid">
         <div class="row text-center">
+
             <div class="col-3  d-md-none d-grid">
-                <span class=" text-center">
+                <a href="{% url "product_list" %}">
+                    <span class=" text-center">
+                        <i class="bi bi-house h3"></i>
+                    </span>
 
-                    <i class="bi bi-house h3"></i>
-
-                </span>
-                <span class=" text-colorforbuy"><small><small>صفحه اصلی</small></small></span>
-
+                    <span class="text-colorforbuy">
+                        <small><small>صفحه اصلی</small></small>
+                    </span>
+                </a>
             </div>
+
             <div class="col-3 d-md-none d-grid ">
-                <span class=" text-center ">
+                <a href="{% url "all_products" %}">
+                    <span class=" text-center ">
+                        <i class="bi bi-ui-checks-grid text-colorforbuyLow  h3"></i>
+                    </span>
 
-                    <i class="bi bi-ui-checks-grid text-colorforbuyLow  h3"></i>
-                </span>
-                <span class=" text-colorforbuy"><small><small>محصولات</small></small></span>
-
+                    <span class=" text-colorforbuy">
+                        <small><small>محصولات</small></small>
+                    </span>
+                </a>
             </div>
+
             <div class="col-3 d-md-none d-grid">
-                <span class=" text-center">
+                <a href="{% url "cart_summary" %}">
+                    <span class=" text-center">
+                        <i class="bi  bi-cart h3"></i>
+                    </span>
 
-                    <i class="bi  bi-cart h3"></i>
-
-                </span>
-                <span class=" text-colorforbuy"><small><small>سبدخرید</small></small></span>
-
+                    <span class=" text-colorforbuy">
+                        <small><small>سبدخرید</small></small>
+                    </span>
+                </a>
             </div>
-            <div class="col-3 d-md-none d-grid">
-                <span class=" text-center ">
 
-                    <i class="bi bi-person-fill h3"></i>
-                  
-                </span>
-                <span class=" text-colorforbuy"><small><small>پروفایل</small></small></span>
+            <div class="col-3 d-md-none d-grid">
+                <a href="{% url "dashboard" %}">
+                    <span class=" text-center ">
+                        <i class="bi bi-person-fill h3"></i>           
+                    </span>
+
+                    <span class=" text-colorforbuy">
+                        <small><small>پروفایل</small></small>
+                    </span>
+                </a>
 
             </div>
         </div>
