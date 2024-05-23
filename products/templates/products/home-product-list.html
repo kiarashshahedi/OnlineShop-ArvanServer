@@ -28,77 +28,74 @@
         border: none;
     }
     
-
-    /* زوم کردن تصاویر در حالت موبایل */
-    @media (max-width: 768px) {
-      .img-fluid  {
-        transform: scale(1.2); /* بزرگ‌نمایی 1.2 برابر */
-        transition: transform 0.5s ease; /* انیمیشن برای زوم */
-      }
+    .carousel-item img {
+        max-height: 600px; /* Adjust the height for larger screens */
+        object-fit: cover;
     }
 
-    /* زوم بیشتر در حالت موبایل کوچکتر */
-    @media (max-width: 576px) {
-      .img-fluid  {
-        transform: scale(1.4); /* بزرگ‌نمایی 1.4 برابر */
-        transition: transform 0.5s ease; /* انیمیشن برای زوم */
-      }
+    /* Increase the height of the carousel images on smaller screens */
+    @media (max-width: 767px) {
+        .carousel-item img {
+            max-height: 400px; /* Adjust the height for smaller screens */
+        }
     }
     </style>
 </head>
 
 {% block body %}
-<div class="container-fluid d-flex justify-content-center align-items-center ">
-    <div class="row">
-        <div class="col-12 col-md-12">
-            <!-- Hero Section -->
-            {% comment %} <div class="mt-1">
-                <a href="{% url 'all_products' %}" class=" fw-bold shadow">
-                    <video autoplay loop muted class="img-fluid">
-                        <source src="{% static 'img/welcome.mp4' %}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+<!--SLIDES ON THE TOP OF THE PAGE-->
+<div class="container-fluid p-0">
+    <!-- SLIDE TOP PAGE -->
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000" data-bs-touch="true">
+        <div class="carousel-inner">
+            <div class="carousel-item active mb-3" data-bs-interval="3000">
+                <a href="{% url 'all_products' %}">
+                    <img src="{% static 'img/bnnr1.webp' %}" class="d-block w-100 img-fluid" alt="Slide 1">
                 </a>
-            </div> {% endcomment %}
+            </div>
+
+            <div class="carousel-item mb-3" data-bs-interval="3000">
+                <a href="{% url 'all_products' %}">
+                    <img src="{% static 'img/bnnr2.webp' %}" class="d-block w-100 img-fluid" alt="Slide 1">
+                </a>
+            </div>
+
+            <div class="carousel-item mb-3" data-bs-interval="3000">
+                <a href="{% url 'all_products' %}">
+                    <img src="{% static 'img/bnnr3.webp' %}" class="d-block w-100 img-fluid" alt="Slide 1">
+                </a>
+            </div>
+
+            <div class="carousel-item mb-3" data-bs-interval="3000">
+                <a href="{% url 'all_products' %}">
+                    <img src="{% static 'img/pcbanner.webp' %}" class="d-block w-100 img-fluid" alt="Slide 2">
+                </a>
+            </div>
+
+            <div class="carousel-item mb-3" data-bs-interval="3000">
+                <a href="{% url 'all_products' %}">
+                    <img src="{% static 'img/iphonebanner.webp' %}" class="d-block w-100 img-fluid" alt="Slide 3">
+                </a>
+            </div>
+
+            <div class="carousel-item mb-3" data-bs-interval="3000">
+                <a href="{% url 'all_products' %}">
+                    <img src="{% static 'img/headphonebanner.jpg' %}" class="d-block w-100 img-fluid" alt="Slide 4">
+                </a>
+            </div>
             
-            <!--SLIDEE TOP PAGE-->
-            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active mb-3" data-bs-interval="10000">
-                    <a href="{% url 'all_products' %}">
-                      <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block img-fluid" alt="...">
-                    </a>
-                  </div>
-                  <div class="carousel-item mb-3" data-bs-interval="10000">
-                    <a href="{% url 'all_products' %}">
-                      <img src="{% static '/img/pcbanner.webp' %}" class="d-block img-fluid" alt="...">
-                    </a>
-                  </div>
-                  <div class="carousel-item mb-3" data-bs-interval="10000">
-                    <a href="{% url 'all_products' %}">
-                      <img src="{% static '/img/iphonebanner.webp' %}" class="d-block img-fluid" alt="...">
-                    </a>
-                  </div>
-                  <div class="carousel-item mb-3" data-bs-interval="10000">
-                    <a href="{% url 'all_products' %}">
-                      <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block img-fluid" alt="...">
-                    </a>
-                  </div>
-                </div>
-            
-                <!-- SLIDE BUTTONS -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </div>
+
 
 
 <!-- forosh vizhe -->
