@@ -4,41 +4,28 @@
 {% load custom_filters %}
 <head>
     <style>
-        /* Hide default controls */
-    video::-webkit-media-controls {
-        display: none !important;
-    }
-    video::-webkit-media-controls-enclosure {
-        display: none !important;
-    }
-    video::-webkit-media-controls-panel {
-        display: none !important;
-    }
-    video::-webkit-media-controls-play-button {
-        display: none !important;
-    }
-    video::-webkit-media-controls-start-playback-button {
-        display: none !important;
-    }
-
-    /* Set video height */
-    video {
-        height: calc(100vh - 60px); /* Subtracting the height of the navbar */
-        width: 100%; /* Ensure the video takes up the full width */
-        border: none;
-    }
     
-    .carousel-item img {
-        max-height: 600px; /* Adjust the height for larger screens */
-        object-fit: cover;
-    }
+        @media (max-width: 768px) {
+            #carouselExampleFade .carousel-item {
+                height: 300px; /* Adjust the height as needed */
+            }
 
-    /* Increase the height of the carousel images on smaller screens */
-    @media (max-width: 767px) {
-        .carousel-item img {
-            max-height: 400px; /* Adjust the height for smaller screens */
+            #carouselExampleFade .carousel-item img {
+                height: 100%;
+                object-fit: cover; /* Ensures the image covers the container */
+            }
         }
-    }
+
+        @media (max-width: 976px) {
+            #carouselExampleFade .carousel-item {
+                height: 250px; /* Adjust the height for smaller screens */
+            }
+
+            #carouselExampleFade .carousel-item img {
+                height: 200%;
+                object-fit: cover;
+            }
+        }
     </style>
 </head>
 
@@ -50,40 +37,34 @@
         <div class="carousel-inner">
             <div class="carousel-item active mb-3" data-bs-interval="3000">
                 <a href="{% url 'all_products' %}">
-                    <img src="{% static 'img/bnnr1.webp' %}" class="d-block w-100 img-fluid" alt="Slide 1">
+                    <img src="{% static 'img/bnnr1.webp' %}" class="d-block w-100 " alt="Slide 1">
                 </a>
             </div>
-
             <div class="carousel-item mb-3" data-bs-interval="3000">
                 <a href="{% url 'all_products' %}">
-                    <img src="{% static 'img/bnnr2.webp' %}" class="d-block w-100 img-fluid" alt="Slide 1">
+                    <img src="{% static 'img/bnnr2.webp' %}" class="d-block w-100 " alt="Slide 1">
                 </a>
             </div>
-
             <div class="carousel-item mb-3" data-bs-interval="3000">
                 <a href="{% url 'all_products' %}">
-                    <img src="{% static 'img/bnnr3.webp' %}" class="d-block w-100 img-fluid" alt="Slide 1">
+                    <img src="{% static 'img/bnnr3.webp' %}" class="d-block w-100 " alt="Slide 1">
                 </a>
             </div>
-
             <div class="carousel-item mb-3" data-bs-interval="3000">
                 <a href="{% url 'all_products' %}">
-                    <img src="{% static 'img/pcbanner.webp' %}" class="d-block w-100 img-fluid" alt="Slide 2">
+                    <img src="{% static 'img/pcbanner.webp' %}" class="d-block w-100 " alt="Slide 2">
                 </a>
             </div>
-
             <div class="carousel-item mb-3" data-bs-interval="3000">
                 <a href="{% url 'all_products' %}">
-                    <img src="{% static 'img/iphonebanner.webp' %}" class="d-block w-100 img-fluid" alt="Slide 3">
+                    <img src="{% static 'img/iphonebanner.webp' %}" class="d-block w-100 " alt="Slide 3">
                 </a>
             </div>
-
             <div class="carousel-item mb-3" data-bs-interval="3000">
                 <a href="{% url 'all_products' %}">
-                    <img src="{% static 'img/headphonebanner.jpg' %}" class="d-block w-100 img-fluid" alt="Slide 4">
+                    <img src="{% static 'img/headphonebanner.jpg' %}" class="d-block w-100 " alt="Slide 4">
                 </a>
             </div>
-            
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
