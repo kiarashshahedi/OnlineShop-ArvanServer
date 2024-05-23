@@ -28,47 +28,47 @@
         border: none;
     }
         
-
     </style>
 </head>
 
 {% block body %}
-
 <div class="container-fluid d-flex justify-content-center align-items-center ">
     <div class="row">
         <div class="col-12 col-md-12">
+            <!-- Hero Section -->
+            {% comment %} <div class="mt-1">
+                <a href="{% url 'all_products' %}" class=" fw-bold shadow">
+                    <video autoplay loop muted class="img-fluid">
+                        <source src="{% static 'img/welcome.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div> {% endcomment %}
             
             <!--SLIDEE TOP PAGE-->
-            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style= "padding:0; margin:0;">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-inner ">
-
-                    <!--photo banner 1-->
                     <div class="carousel-item active mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
-                            <img src="{% static 'img/sliderbanner2.webp' %}" class="d-block img-fluid" alt="...">
+                            <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block img-fluid" alt="...">
                         </a>
                     </div>
-
-                    <!--photo banner 2-->
                     <div class="carousel-item mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
                             <img src="{% static '/img/pcbanner.webp' %}" class="d-block img-fluid" alt="...">
                         </a>
                     </div>
-
-                    <!--photo banner 3-->
                     <div class="carousel-item mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
                             <img src="{% static '/img/iphonebanner.webp' %}" class="d-block img-fluid" alt="...">
                         </a>
                     </div>
-
-                    <!--photo banner 4-->
                     <div class="carousel-item mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/slidbanner.webp' %}" class="d-block img-fluid" alt="...">
+                            <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block img-fluid" alt="...">
                         </a>
                     </div>
+
 
                 </div>
                 
@@ -81,23 +81,23 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-
             </div>
         </div>
     </div>
 </div>
 
+
 <!-- forosh vizhe -->
+
 <div class="container mt-1 shadow  rounded-5">
 
     <div class="row gx-1">
-
         <a href="{% url 'Discounted' %}" class="col-12 mt-1">
             <img class="img-fluid rounded-5 d-none d-md-block" src="{% static 'products/img/off.png' %}" alt="">
         </a>
-
+        
         {% for product in sale %}
-        <div class="col-6 col-md-3 border border-2 p-2 rounded-4  mt-3 mb-3 ms-1">
+        <div class="col-12 col-md-3 border border-2 p-2 rounded-4  mt-3 mb-3 ms-1">
             <a href="{% url 'product_detail' product.pk %}">
                 <div class="rounded-5">
                     <div class="bg-white">
@@ -118,25 +118,21 @@
     </div>
 </div>
   
+
 <!-- PRODUCTS -->
 <div class="container mt-3  shadow border border-1 rounded-4 ">
     <!-- HEAD PIC OF ALL PRODUCTS -->
     <div class="row p-2">
-
         <a href="{% url 'all_products' %}" class="col-12">
             <img class="img-fluid rounded-5 d-none d-md-block" src="{% static 'products/img/kala.png' %}" alt="">
         </a>
 
         <!-- BOX ALL PRODUCTS -->
         {% for product in products %}
-        <div class="col-6 col-md-3 border border-2 p-1 rounded-4 position-relative mt-3 mb-3 ">
-
+        <div class="col-12 col-md-3  shadow rounded-3 position-relative mt-3 mb-3 ">
             <a href="{% url 'product_detail' product.pk %}">
-
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="d-block w-100 ">
-
                 <div class="product-info p-3"> <!-- Added padding to the product info -->
-
                     <p class="text-black text-start fw-bold mt-1">
                         <span class="bi bi-box text-color1 text-start mx-1 "></span>{{ product.name }}
                     </p>
@@ -149,12 +145,14 @@
                         <p class="text-colorforbuyLow text-end mt-2 fw-bold mb-0">{{ product.price }} <small>تومان</small></p>
                         {% endif %}
                     </div>
-                    
                 </div>
             </a>
         </div>
         {% endfor %}
     </div>
 </div>
+
+
+
 
 {% endblock %}
