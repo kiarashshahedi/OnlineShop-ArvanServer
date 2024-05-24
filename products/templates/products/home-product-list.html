@@ -126,19 +126,22 @@
         <a href="{% url 'all_products' %}" class="col-12">
             <img class="img-fluid rounded-5 d-md-block" src="{% static 'products/img/kala.png' %}" alt="">
         </a>
+        <a href="{% url 'all_products' %}" class="col-12">
+            <img class="img-fluid rounded-5 d-block d-md-none" style="height: 20px;" src="{% static 'products/img/kala.png' %}" alt="">
+        </a>
 
         <!-- BOX ALL PRODUCTS -->
         {% for product in products %}
         <div class="col-6 col-md-3  border border-2 p-2 rounded-4  mt-3 mb-3 position-relative">
             <a href="{% url 'product_detail' product.pk %}">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="d-block w-100 ">
-                <div class="product-info p-1"> <!-- Added padding to the product info -->
+                <div class="product-info "> <!-- Added padding to the product info -->
                     <p class="text-black text-start fw-bold mt-1">
                        <small>
                            <span class="bi bi-box text-color1 text-start me-1 "></span>{{ product.name }}
                        </small>
                     </p>
-                    <hr class="shadow"></br></hr>
+                    <hr class="shadow my-2"></br></hr>
 
                     <div class="d-flex align-items-end flex-column position-absolute" style="bottom: 0; left: 0; padding: 10px;">
                     
