@@ -197,20 +197,35 @@
             </div>
 
             <div class="col-3 d-md-none d-grid">
+                {% if user.is_authenticated %}
+
                 <a class="btn text-colorforbuylow" href="{% url "dashboard" %}">
                     <div>
-
                         <span class=" text-center text-colorforbuylow ">
                             <i class="bi bi-person-fill  h3"></i>           
                         </span>
                     </div>
                     <div>
-
                         <span class=" text-colorforbuy">
                             <small><small>پروفایل</small></small>
                         </span>
                     </div>
                 </a>
+
+                {% else %}
+                <a class="btn text-colorforbuylow" href="{% url "register_view" %}">
+                    <div>
+                        <span class=" text-center text-colorforbuylow ">
+                            <i class="bi bi-person-fill  h3"></i>           
+                        </span>
+                    </div>
+                    <div>
+                        <span class=" text-colorforbuy">
+                            <small><small>پروفایل</small></small>
+                        </span>
+                    </div>
+                </a>
+                {% endif %}
 
             </div>
         </div>
