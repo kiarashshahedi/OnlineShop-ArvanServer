@@ -85,9 +85,9 @@
                 <div class="card-body text-center">
                     <h2 class="card-title">{{ product.name }}</h2>
                     <h5 class="text-colorforbuyLow text-start mt-4"> <small>مشخصات:</small></h5>
-                    <h6 class="text-colorforbuy text-start">سری پردازنده: <span class="text-black">Core i7</span></h6>
-                    <h6 class="text-colorforbuy text-start">سازنده پردازنده: <span class="text-black">Intel</span> </h6>
-                    <h6 class="text-colorforbuy text-start">فرکانس کاری پردازنده: <span class="text-black">UP To 2.7 GHz</span> </h6>
+                    <h6 class="text-colorforbuy text-start"> دسته بندی : <span class="text-black">{{ product.category }}</span> </h6>
+                    <h6 class="text-colorforbuy text-start">سال تولید : <span class="text-black">۲۰۱۹</span></h6>
+                    <h6 class="text-colorforbuy text-start">کشور سازنده : <span class="text-black">آمریکا</span> </h6>
                     <p class="card-text mt-3 text-end fw-bold ">
                         {% if product.in_sale %}
                         <span class="text-colorforbuyLow text-color1"><small><s>{{ product.price }}</s></small></span>
