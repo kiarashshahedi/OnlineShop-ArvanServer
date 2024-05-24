@@ -27,14 +27,14 @@
         width: 100%; /* Ensure the video takes up the full width */
         border: none;
     }
-    .carousel-item img {
+    .carousel-item {
       width: 100%;
       height: auto;
     }
 
     /* زوم کردن تصاویر در حالت موبایل */
     @media (max-width: 768px) {
-      .carousel-item img {
+      .carousel-item {
         transform: scale(1.2); /* بزرگ‌نمایی 1.2 برابر */
         transition: transform 0.5s ease; /* انیمیشن برای زوم */
       }
@@ -42,7 +42,7 @@
 
     /* زوم بیشتر در حالت موبایل کوچکتر */
     @media (max-width: 576px) {
-      .carousel-item img {
+      .carousel-item{
         transform: scale(1.4); /* بزرگ‌نمایی 1.4 برابر */
         transition: transform 0.5s ease; /* انیمیشن برای زوم */
       }
