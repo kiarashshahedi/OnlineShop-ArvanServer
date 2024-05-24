@@ -129,7 +129,7 @@
 
         <!-- BOX ALL PRODUCTS -->
         {% for product in products %}
-        <div class="col-12 col-md-3  shadow rounded-3 position-relative mt-3 mb-3 ">
+        <div class="col-6 col-md-3  shadow rounded-3 position-relative mt-3 mb-3 ">
             <a href="{% url 'product_detail' product.pk %}">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="d-block w-100 ">
                 <div class="product-info p-3"> <!-- Added padding to the product info -->
