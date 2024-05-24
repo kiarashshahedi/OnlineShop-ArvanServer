@@ -27,21 +27,24 @@
         width: 100%; /* Ensure the video takes up the full width */
         border: none;
     }
-    .mobile-size {
+    .carousel-item img {
       width: 100%;
       height: auto;
     }
 
+    /* زوم کردن تصاویر در حالت موبایل */
     @media (max-width: 768px) {
-      .carousel-item  {
-        transform: scale(1.5); /* بزرگ‌نمایی 1.2 برابر */
+      .carousel-item img {
+        transform: scale(1.2); /* بزرگ‌نمایی 1.2 برابر */
+        transition: transform 0.5s ease; /* انیمیشن برای زوم */
       }
     }
 
     /* زوم بیشتر در حالت موبایل کوچکتر */
     @media (max-width: 576px) {
-      .carousel-item {
+      .carousel-item img {
         transform: scale(1.4); /* بزرگ‌نمایی 1.4 برابر */
+        transition: transform 0.5s ease; /* انیمیشن برای زوم */
       }
     }
     </style>
@@ -63,62 +66,39 @@
             
             <!--SLIDEE TOP PAGE-->
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                <div class="carousel-inner ">
-                    <div class="carousel-item active mb-3 d-none d-md-block mobile-size" data-bs-interval="10000">
-                        <a href="{% url 'all_products' %}">
-                            <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
-                        </a>
-                    </div>
-                    <div class="carousel-item mb-3 mobile-size d-none d-md-block" data-bs-interval="10000">
-                        <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/pcbanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
-                        </a>
-                    </div>
-                    <div class="carousel-item mb-3 mobile-size d-none d-md-block" data-bs-interval="10000">
-                        <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/iphonebanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
-                        </a>
-                    </div>
-                    <div class="carousel-item mb-3 mobile-size d-none d-md-block" data-bs-interval="10000">
-                        <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block img-fluid mobile-size" alt="...">
-                        </a>
-                    </div>
-
-                    <!--  -->
-                    <div class="carousel-item active mb-3 mobile-size d-block d-md-none" data-bs-interval="10000">
-                        <a href="{% url 'all_products' %}">
-                            <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block  mobile-size" alt="...">
-                        </a>
-                    </div>
-                    <div class="carousel-item mb-3 mobile-size d-block d-md-none" data-bs-interval="10000">
-                        <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/pcbanner.webp' %}" class="d-block  mobile-size" alt="...">
-                        </a>
-                    </div>
-                    <div class="carousel-item mb-3 mobile-size d-block d-md-none" data-bs-interval="10000">
-                        <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/iphonebanner.webp' %}" class="d-block  mobile-size" alt="...">
-                        </a>
-                    </div>
-                    <div class="carousel-item mb-3 mobile-size d-block d-md-none" data-bs-interval="10000">
-                        <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block  mobile-size" alt="...">
-                        </a>
-                    </div>
-
+                <div class="carousel-inner">
+                  <div class="carousel-item active mb-3" data-bs-interval="10000">
+                    <a href="{% url 'all_products' %}">
+                      <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block img-fluid" alt="...">
+                    </a>
+                  </div>
+                  <div class="carousel-item mb-3" data-bs-interval="10000">
+                    <a href="{% url 'all_products' %}">
+                      <img src="{% static '/img/pcbanner.webp' %}" class="d-block img-fluid" alt="...">
+                    </a>
+                  </div>
+                  <div class="carousel-item mb-3" data-bs-interval="10000">
+                    <a href="{% url 'all_products' %}">
+                      <img src="{% static '/img/iphonebanner.webp' %}" class="d-block img-fluid" alt="...">
+                    </a>
+                  </div>
+                  <div class="carousel-item mb-3" data-bs-interval="10000">
+                    <a href="{% url 'all_products' %}">
+                      <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block img-fluid" alt="...">
+                    </a>
+                  </div>
                 </div>
-                
+            
                 <!-- SLIDE BUTTONS -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
                 </button>
-            </div>
+              </div>
         </div>
     </div>
 </div>
