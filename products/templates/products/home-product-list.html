@@ -120,7 +120,7 @@
   
 
 <!-- PRODUCTS -->
-<div class="container mt-3 shadow border border-1 rounded-4">
+<div class="container mt-3  shadow border border-1 rounded-4 ">
     <!-- HEAD PIC OF ALL PRODUCTS -->
     <div class="row p-2">
         <a href="{% url 'all_products' %}" class="col-12">
@@ -129,34 +129,22 @@
 
         <!-- BOX ALL PRODUCTS -->
         {% for product in products %}
-        <div class="col-6 col-md-3 border border-2 p-2 rounded-4 mt-3 mb-3 position-relative">
+        <div class="col-6 col-md-3  border border-2 p-2 rounded-4  mt-3 mb-3 position-relative">
             <a href="{% url 'product_detail' product.pk %}">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="d-block w-100 ">
                 <div class="product-info p-3"> <!-- Added padding to the product info -->
                     <p class="text-black text-start fw-bold mt-1">
-<<<<<<< HEAD
                         <span class="bi bi-box text-color1 text-start me-1 "></span>{{ product.name }}
-=======
-                        <span class="bi bi-box text-color1 text-start mx-1"></span>{{ product.name }}
->>>>>>> 4d24ab98010c910fab60051378bb3317fa2b02bb
                     </p>
                     <hr class="shadow"></hr>
                     
-                    <div class="d-flex flex-column position-absolute" style="bottom: 0; left: 0; padding: 10px;">
-                        <hr class="my-2 border-top border-2 border-dark"> <!-- Add a line separator -->
-                        
+                    <div class="d-flex align-items-end flex-column position-absolute" style="bottom: 0; left: 0; padding: 10px;">
                         {% if product.in_sale %}
-<<<<<<< HEAD
                        
                         <p class="text-end text-colorforbuyLow mb-0"><s>{{ product.price }}</s></p>
                         <p class="text-end text-color1 fw-bold mb-0"> {{ product.sale_price }} <small>تومان</small></p>
                         {% else %}
                        
-=======
-                        <p class="text-end text-colorforbuyLow mb-0"><s>{{ product.price }}</s> <small>تومان</small></p>
-                        <p class="text-end text-color1 fw-bold mb-0">{{ product.sale_price }} <small>تومان</small></p>
-                        {% else %}
->>>>>>> 4d24ab98010c910fab60051378bb3317fa2b02bb
                         <p class="text-end text-color1 fw-bold mb-0">{{ product.price }} <small>تومان</small></p>
                         {% endif %}
                     </div>
@@ -166,7 +154,6 @@
         {% endfor %}
     </div>
 </div>
-
 
 
 
