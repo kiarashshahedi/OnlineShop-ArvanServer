@@ -33,17 +33,15 @@
     }
 
     @media (max-width: 768px) {
-      .carousel-item img {
-        transform: scale(1.2); /* بزرگ‌نمایی 1.2 برابر */
-        transition: transform 0.5s ease; /* انیمیشن برای زوم */
+      .mobile-size {
+        transform: scale(1.5); /* بزرگ‌نمایی 1.2 برابر */
       }
     }
 
     /* زوم بیشتر در حالت موبایل کوچکتر */
     @media (max-width: 576px) {
-      .carousel-item img {
+      .mobile-size {
         transform: scale(1.4); /* بزرگ‌نمایی 1.4 برابر */
-        transition: transform 0.5s ease; /* انیمیشن برای زوم */
       }
     }
     </style>
@@ -68,22 +66,22 @@
                 <div class="carousel-inner ">
                     <div class="carousel-item active mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
-                            <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
+                            <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block  mobile-size" alt="...">
                         </a>
                     </div>
                     <div class="carousel-item mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/pcbanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
+                            <img src="{% static '/img/pcbanner.webp' %}" class="d-block  mobile-size" alt="...">
                         </a>
                     </div>
                     <div class="carousel-item mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/iphonebanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
+                            <img src="{% static '/img/iphonebanner.webp' %}" class="d-block  mobile-size" alt="...">
                         </a>
                     </div>
                     <div class="carousel-item mb-3" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
-                            <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block img-fluid mobile-size" alt="...">
+                            <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block  mobile-size" alt="...">
                         </a>
                     </div>
 
