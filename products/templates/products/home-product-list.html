@@ -35,7 +35,6 @@
     @media (max-width: 768px) {
       .mobilesizeSlider {
         transform: scale(1.2); /* بزرگ‌نمایی 1.2 برابر */
-        transition: transform 0.5s ease; /* انیمیشن برای زوم */
       }
     }
 
@@ -43,7 +42,6 @@
     @media (max-width: 576px) {
       .mobilesizeSlider{
         transform: scale(1.4); /* بزرگ‌نمایی 1.4 برابر */
-        transition: transform 0.5s ease; /* انیمیشن برای زوم */
       }
     }
     </style>
@@ -60,22 +58,22 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active mb-3" data-bs-interval="10000">
                     <a href="{% url 'all_products' %}">
-                      <img src="{% static 'products/img/bnnr2.webp' %}" class="d-block w-100 mobilesizeSlider"  alt="...">
+                      <img src="{% static '/img/bnnr2.webp' %}" class="d-block mobilesizeSlider"  alt="...">
                     </a>
                   </div>
                   <div class="carousel-item mb-3" data-bs-interval="10000">
                     <a href="{% url 'all_products' %}">
-                      <img src="{% static '/img/pcbanner.webp' %}" class="d-block w-100 mobilesizeSlider" alt="...">
+                      <img src="{% static '/img/pcbanner.webp' %}" class="d-block mobilesizeSlider" alt="...">
                     </a>
                   </div>
                   <div class="carousel-item mb-3" data-bs-interval="10000">
                     <a href="{% url 'all_products' %}">
-                      <img src="{% static '/img/iphonebanner.webp' %}" class="d-block w-100 mobilesizeSlider"  alt="...">
+                      <img src="{% static '/img/iphonebanner.webp' %}" class="d-block mobilesizeSlider"  alt="...">
                     </a>
                   </div>
                   <div class="carousel-item mb-3" data-bs-interval="10000">
                     <a href="{% url 'all_products' %}">
-                      <img src="{% static '/img/bnnr1.webp' %}" class="d-block w-100 mobilesizeSlider"  alt="...">
+                      <img src="{% static '/img/bnnr1.webp' %}" class="d-block mobilesizeSlider"  alt="...">
                     </a>
                   </div>
                 </div>
