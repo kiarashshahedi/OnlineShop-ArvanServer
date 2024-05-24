@@ -20,15 +20,15 @@
     {% for product in cart_products %} 
         <div class="container-fluid  mt-5">
             <div class="row mx-2">
-                <div class="col-12 col-md-8 mx-auto">
+                <div class="col-11 col-md-8 mx-auto">
                     <div class="border border-1 rounded-3 d-flex  shadow bg-white">
 
-                        <div class="text-center col-3 col-md-3">
+                        <div class="text-center col-12 col-md-3">
                             <img class="img-fluid mx-1 mt-1" src="{{product.image.url}}" alt="">
                         </div>
 
                         <!-- moshakhasat zire esm mahsol-->
-                        <div class="d-block justify-content-start  ">
+                        <div class="d-block justify-content-start   ">
                             <div class=" mb-1 ">
                             <p class="fs-5 mt-2 fw-bold mx-1">
                                 <i class="bi bi-caret-left-fill text-danger "></i>
@@ -39,7 +39,7 @@
                                 <span class=" text-colorforbuyLow"><i class="bi bi-circle-fill text-dark mx-3"></i> سیاه</span>                       
                             </div>
                             <!-- NESHAN DAHANDE TEDAD -->
-                            <div class="d-flex">                         
+                            <div class="d-flex col-6">                         
                                 <span class=" text-muted mb-1 pb-2"><i class="bi bi-clipboard-check text-danger mx-3"></i> تعداد : </span>
                                 {% for key, value in quantities.items %}
                                 {% if key == product.id|slugify %}
