@@ -139,9 +139,13 @@
                     
                     <div class="d-flex align-items-end flex-column position-absolute" style="bottom: 0; left: 0; padding: 10px;">
                         {% if product.in_sale %}
+                        <hr class="shadow"></hr>
+
                         <p class="text-end text-colorforbuyLow mb-0"><s>{{ product.price }}</s></p>
                         <p class="text-end text-color1 fw-bold mb-0">قیمت با تخفیف: {{ product.sale_price }} <small>تومان</small></p>
                         {% else %}
+                        <hr class="shadow"></hr>
+
                         <p class="text-end text-color1 fw-bold mb-0">{{ product.price }} <small>تومان</small></p>
                         {% endif %}
                     </div>
