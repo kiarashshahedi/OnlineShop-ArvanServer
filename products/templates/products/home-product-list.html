@@ -64,27 +64,48 @@
             <!--SLIDEE TOP PAGE-->
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-inner ">
-                    <div class="carousel-item active mb-3 mobile-size" data-bs-interval="10000">
+                    <div class="carousel-item active mb-3 d-none d-md-block mobile-size" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
                             <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
                         </a>
                     </div>
-                    <div class="carousel-item mb-3 mobile-size" data-bs-interval="10000">
+                    <div class="carousel-item mb-3 mobile-size d-none d-md-block" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
                             <img src="{% static '/img/pcbanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
                         </a>
                     </div>
-                    <div class="carousel-item mb-3 mobile-size" data-bs-interval="10000">
+                    <div class="carousel-item mb-3 mobile-size d-none d-md-block" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
                             <img src="{% static '/img/iphonebanner.webp' %}" class="d-block img-fluid mobile-size" alt="...">
                         </a>
                     </div>
-                    <div class="carousel-item mb-3 mobile-size" data-bs-interval="10000">
+                    <div class="carousel-item mb-3 mobile-size d-none d-md-block" data-bs-interval="10000">
                         <a href="{% url 'all_products' %}">
                             <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block img-fluid mobile-size" alt="...">
                         </a>
                     </div>
 
+                    <!--  -->
+                    <div class="carousel-item active mb-3 mobile-size d-block d-md-none" data-bs-interval="10000">
+                        <a href="{% url 'all_products' %}">
+                            <img src="{% static 'products/img/slidebanner.webp' %}" class="d-block  mobile-size" alt="...">
+                        </a>
+                    </div>
+                    <div class="carousel-item mb-3 mobile-size d-block d-md-none" data-bs-interval="10000">
+                        <a href="{% url 'all_products' %}">
+                            <img src="{% static '/img/pcbanner.webp' %}" class="d-block  mobile-size" alt="...">
+                        </a>
+                    </div>
+                    <div class="carousel-item mb-3 mobile-size d-block d-md-none" data-bs-interval="10000">
+                        <a href="{% url 'all_products' %}">
+                            <img src="{% static '/img/iphonebanner.webp' %}" class="d-block  mobile-size" alt="...">
+                        </a>
+                    </div>
+                    <div class="carousel-item mb-3 mobile-size d-block d-md-none" data-bs-interval="10000">
+                        <a href="{% url 'all_products' %}">
+                            <img src="{% static '/img/headphonebanner.jpg' %}" class="d-block  mobile-size" alt="...">
+                        </a>
+                    </div>
 
                 </div>
                 
