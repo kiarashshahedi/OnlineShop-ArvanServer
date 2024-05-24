@@ -4,30 +4,7 @@
 {% load custom_filters %}
 <head>
     <style>
-        /* Hide default controls */
-    video::-webkit-media-controls {
-        display: none !important;
-    }
-    video::-webkit-media-controls-enclosure {
-        display: none !important;
-    }
-    video::-webkit-media-controls-panel {
-        display: none !important;
-    }
-    video::-webkit-media-controls-play-button {
-        display: none !important;
-    }
-    video::-webkit-media-controls-start-playback-button {
-        display: none !important;
-    }
-
-    /* Set video height */
-    video {
-        height: calc(100vh - 60px); /* Subtracting the height of the navbar */
-        width: 100%; /* Ensure the video takes up the full width */
-        border: none;
-    }
-    
+       
     .carousel-item img {
         max-height: 600px; /* Adjust the height for larger screens */
         object-fit: cover;
@@ -37,6 +14,77 @@
     @media (max-width: 767px) {
         .carousel-item img {
             max-height: 400px; /* Adjust the height for smaller screens */
+        }
+    }
+    .card {
+        border-radius: 0.5rem;
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .price p {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 767.98px) {
+        .card-title {
+            font-size: 0.9rem;
+        }
+
+        .price p {
+            font-size: 0.9rem;
+        }
+    }
+    .product-info {
+        padding-bottom: 50px; /* Ensure space for price display */
+    }
+
+    .product-info p {
+        margin: 0;
+    }
+
+    .border {
+        border-radius: 0.5rem;
+    }
+
+    .position-relative {
+        position: relative;
+    }
+
+    .position-absolute {
+        position: absolute;
+    }
+
+    .shadow {
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 767.98px) {
+        .col-6 {
+            padding: 0.5rem;
+        }
+
+        .product-info {
+            padding-bottom: 30px; /* Adjust for mobile */
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+        }
+
+        .border {
+            border-width: 1px;
+        }
+
+        .shadow {
+            box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.1);
         }
     }
     </style>
@@ -89,26 +137,26 @@
 
 <!-- forosh vizhe -->
 
-<div class="container mt-1 shadow  rounded-5">
-
+<div class="container mt-1 shadow rounded-5 p-3">
     <div class="row gx-1">
         <a href="{% url 'Discounted' %}" class="col-12 mt-1">
             <img class="img-fluid rounded-5 d-none d-md-block" src="{% static 'products/img/off.png' %}" alt="">
         </a>
         
         {% for product in sale %}
-        <div class="col-12 col-md-3 border border-2 p-2 rounded-4  mt-3 mb-3 ms-1">
-            <a href="{% url 'product_detail' product.pk %}">
-                <div class="rounded-5">
-                    <div class="bg-white">
-                        <div class="text-light text-center fw-bold color1">تخفیف</div>
-
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="d-block w-100 ">
-                        <div class="overflow-hidden">
-                            <p class="text-black text-start fw-bold mt-2 mb-1"><span class="bi bi-box text-color1 mt-1 mx-1"></span>{{product.name}}</p>
-                            <hr class="shadow"></hr>
-                            <p class="text-end text-colorforbuyLow mb-0"><s>{{product.price}} تومان </s></p>
-                            <p class="text-end text-color1 fw-bold mb-0">{{product.sale_price}} تومان </p>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-2 shadow border border-1 rounded-3">
+            <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
+                <div class=" h-100 rounded-4">
+                    <div class="bg-white position-relative">
+                        <div class="position-absolute top-0 end-0 bg-danger text-light text-center fw-bold py-1 px-2 rounded-start">تخفیف</div>
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top rounded-4">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <p class="card-title fw-bold mt-2 mb-1 text-center">{{product.name}}</p>
+                            <hr>
+                            <div class="price d-flex flex-column align-items-end">
+                                <p class="text-muted text-decoration-line-through mb-0">{{product.price}} تومان </p>
+                                <p class="text-danger fw-bold mb-0">{{product.sale_price}} تومان </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -117,51 +165,38 @@
         {% endfor %}
     </div>
 </div>
+
   
 
 <!-- PRODUCTS -->
-<div class="container mt-3  shadow border border-1 rounded-4 ">
+<div class="container mt-3 shadow border border-1 rounded-4 p-3">
     <!-- HEAD PIC OF ALL PRODUCTS -->
     <div class="row p-1">
         <a href="{% url 'all_products' %}" class="col-12">
             <img class="img-fluid rounded-5 d-none d-md-block w-100" src="{% static 'products/img/kala.png' %}" alt="">
         </a>
         <a href="{% url 'all_products' %}" class="col-12">
-            <img class="img-fluid rounded-4 d-block d-md-none w-100" style="height: 30px;" src="{% static 'products/img/kala.png' %}" alt="">
+            <img class="img-fluid rounded-4 d-block d-md-none w-100" style="height: auto;" src="{% static 'products/img/kala.png' %}" alt="">
         </a>
 
         <!-- BOX ALL PRODUCTS -->
         {% for product in products %}
-        <div class="col-6 col-md-3  border border-2 p-2 rounded-4  mt-3 mb-3 position-relative">
-            <a href="{% url 'product_detail' product.pk %}">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="d-block w-100 ">
-                <div class="product-info "> <!-- Added padding to the product info -->
+        <div class="col-6 col-md-3 border border-1 shadow p-2 rounded-3 mt-3 mb-3 position-relative">
+            <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="d-block w-100 rounded-4">
+                <div class="product-info mt-2">
                     <p class="text-black text-start fw-bold mt-1">
-                       <small>
-                           <span class="bi bi-box text-color1 text-start me-1 "></span>{{ product.name }}
-                       </small>
-                    </p>
-                   
-<br>
-                    <div class="d-flex align-items-end flex-column position-absolute p-2 mt-2" style="bottom: 0; left: 0; padding: 10px;">
-                        <hr class="shadow"></br></hr>
-                        {% if product.in_sale %}
                         <small>
-                            <small>
-                                <p class="text-end text-colorforbuyLow mb-0"><s>{{product.price}} تومان </s></p>
-                            </small>
-                        </small>   
-                        <small>
-
-                            <p class="text-end text-color1 fw-bold mb-0">{{product.sale_price}} تومان </p>
+                            <span class="bi bi-box text-color1 text-start me-1"></span>{{ product.name }}
                         </small>
-
-                        {% else %}   
-                        <small>
-
-                            <p class="text-end text-color1 fw-bold mb-0">{{ product.price }} <small>تومان</small></p>
-                        </small>               
-
+                    </p>
+                    <div class="mt-5"></div>
+                    <div class="d-flex flex-column align-items-start position-absolute p-2" style="bottom: 0; left: 0;">
+                        {% if product.in_sale %}
+                        <p class="text-end text-colorforbuyLow mb-0"><small><s>{{ product.price }} تومان</s></small></p>
+                        <p class="text-end text-color1 fw-bold mb-0"><small>{{ product.sale_price }} تومان</small></p>
+                        {% else %}
+                        <p class="text-end text-color1 fw-bold mb-0"><small>{{ product.price }} <small>تومان</small></small></p>
                         {% endif %}
                     </div>
                 </div>
@@ -170,5 +205,6 @@
         {% endfor %}
     </div>
 </div>
+
 
 {% endblock %}
