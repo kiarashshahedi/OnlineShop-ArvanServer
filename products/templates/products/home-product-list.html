@@ -132,7 +132,7 @@
         <div class="col-6 col-md-3  border border-2 p-2 rounded-4  mt-3 mb-3 position-relative">
             <a href="{% url 'product_detail' product.pk %}">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="d-block w-100 ">
-                <div class="product-info p-3"> <!-- Added padding to the product info -->
+                <div class="product-info p-1"> <!-- Added padding to the product info -->
                     <p class="text-black text-start fw-bold mt-1">
                        <small>
                            <span class="bi bi-box text-color1 text-start me-1 "></span>{{ product.name }}
